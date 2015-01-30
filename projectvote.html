@@ -1,0 +1,32 @@
+<head>
+  <title>projectvote</title>
+</head>
+
+<body>
+  <h1>Vote on a project</h1>
+
+  {{> project}}
+  {{> projectAdd}}
+</body>
+
+<template name="project">
+  <div>
+    {{#each projects}}
+      {{name}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="projectAdd">
+  <form class="proposal">
+    <label>Name</label>
+    <input type="text" name="name">
+
+    <br>
+
+    <label>Description</label>
+    <input type="text" name="description">
+
+    <button type="submit">Submit</button>
+  </form>
+</template>
