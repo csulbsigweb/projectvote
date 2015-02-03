@@ -1,4 +1,11 @@
 <template name="projects">
+  {{#if currentUser}}
+    <a class="btn btn-success" href="{{urlFor 'projectAdd'}}">Add Project</a>
+  {{else}}
+  <h3>Please log in to add a project.</h3>
+  {{/if}}
+  <br>
+  <br>
   {{#each projects}}
   <div class="row">
     <div class="panel panel-info">
@@ -9,9 +16,12 @@
         <p>
           {{description}}
         </p>
+        {{#each languages}}
+          <span class="label label-info">{{this}}</span>
+        {{/each}}
       </div>
       <div class="panel-footer">
-        <p class="muted">Created by </p>{{createdBy}}
+        <p class="muted">Created by {{createdBy}}</p>
       </div>
     </div>
   </div>
