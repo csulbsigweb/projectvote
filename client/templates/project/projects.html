@@ -1,4 +1,10 @@
 <template name="projects">
+  <div class="jumbotron">
+    <h1>Hello, Sigweb!</h1>
+    <p>This is projectvote. This semester CSULB Sigweb will band together and
+    collaboratively work on a project! Login with your github and add project
+    proposals!</p>
+  </div>
   {{#if currentUser}}
     <a class="btn btn-success" href="{{urlFor 'projectAdd'}}">Add Project</a>
   {{else}}
@@ -13,12 +19,15 @@
         <h4>{{name}}</h4>
       </div>
       <div class="panel-body">
-        <p>
-          {{description}}
-        </p>
-        {{#each languages}}
-          <span class="label label-info">{{this}}</span>
-        {{/each}}
+        <div class="col-md-8">
+          <p>
+            {{description}}
+          </p>
+          {{#each languages}}
+            <span class="label label-info">{{this}}</span>
+          {{/each}}
+        </div>
+        {{> projectVotes}}
       </div>
       <div class="panel-footer">
         <p class="muted">Created by {{createdBy}}</p>
@@ -26,4 +35,11 @@
     </div>
   </div>
   {{/each}}
+</template>
+
+<template name="projectVotes">
+  <div class="col-md-4 pull-right">
+    <h4>Votes: {{this.votes}}</h4>
+    <button id="{{this._id}}" class="btn btn-success vote voteButton"></button>
+  </div>
 </template>

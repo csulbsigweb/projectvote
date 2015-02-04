@@ -1,1 +1,8 @@
 /* CSS declarations go here */
+.voteButton:after {
+  content: "Vote";
+}
+
+.unvoteButton:after {
+  content: "UnVote";
+}
