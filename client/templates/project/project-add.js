@@ -14,7 +14,7 @@ Template.projectAdd.events({
         name: name,
         description: description,
         languages: langArray,
-        votes: 0,
+        upvotes: 0,
         voters: [],
         createdBy: Meteor.user().profile.name
       });
@@ -31,26 +31,5 @@ Template.projectAdd.events({
       Router.go('projects');
       return false;
     }
-  },
-  'click .vote': function(event) {
-      if ($('.vote').hasClass('voteButton')) {
-        Projects.update(this._id, {
-          $inc: {
-            votes: 1
-          }
-        });
-
-        $('.vote').removeClass('voteButton');
-        $('.vote').addClass('unvoteButton');
-      } else {
-        Projects.update(this._id, {
-          $inc: {
-            votes: -1
-          }
-        });
-
-        $('.vote').removeClass('unvoteButton');
-        $('.vote').addClass('voteButton');
-      }
   }
 });
