@@ -14,8 +14,8 @@ Template.projectAdd.events({
         name: name,
         description: description,
         languages: langArray,
-        upvotes: 0,
-        voters: [],
+        votes: 0,
+        upvoters: [],
         createdBy: Meteor.user().profile.name
       });
 

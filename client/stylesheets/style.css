@@ -6,3 +6,7 @@
 .unvoteButton:after {
   content: "UnVote";
 }
+
+.loginVote:after {
+  content: "Log in to vote!";
+}

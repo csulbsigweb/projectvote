@@ -8,7 +8,7 @@
   {{#if currentUser}}
     <a class="btn btn-success" href="{{urlFor 'projectAdd'}}">Add Project</a>
   {{else}}
-  <h3>Please log in to add a project.</h3>
+  <h3>Please log in to add a project and vote!</h3>
   {{/if}}
   <br>
   <br>
@@ -40,6 +40,6 @@
 <template name="projectVotes">
   <div class="col-md-4 pull-right">
     <h4>Votes: {{this.votes}}</h4>
-    <button id="{{this._id}}" class="btn btn-success vote voteButton"></button>
+    <button id="{{this._id}}" class="btn {{buttonColor}} vote"></button>
   </div>
 </template>
