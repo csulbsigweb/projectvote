@@ -24,7 +24,6 @@ Template.projectAdd.events({
         Router.go('/');
       });
       // might be better to redirect here instead
-      Router.go('/');
     }
   }
 });
