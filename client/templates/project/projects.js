@@ -1,6 +1,10 @@
 Template.projects.helpers({
   projects: function() {
-    return Projects.find({}, {sort: {votes: -1}});
+    return Projects.find({}, {
+      sort: {
+        votes: -1
+      }
+    });
   }
 
 });
@@ -22,23 +26,8 @@ Template.projectVotes.helpers({
 });
 
 Template.projectVotes.events({
-    'click .vote': function(event) {
-    event.preventDefault();
-    if (Meteor.user()) {
-      var project = Projects.findOne(this._id);
-      if (!project)
-        throw new Meteor.Error('invalid', 'project does not exist');
-      if (_.include(project.upvoters, Meteor.userId())) {
-        Projects.update(project._id, {
-          $pull: {upvoters: Meteor.userId()},
-          $inc: {votes: -1}
-        });
-      } else {
-        Projects.update(project._id, {
-          $addToSet: {upvoters: Meteor.userId()},
-          $inc: {votes: 1}
-        });
-      }
-    }
+  'click .vote': function(event) {
+    var projId = this._id;
+    Meteor.call('projectUpvote', projId);
   }
 });

@@ -10,26 +10,19 @@ Template.projectAdd.events({
       });
 
       // Add project to database
-      Projects.insert({
+      var projAttrs = {
         name: name,
         description: description,
         languages: langArray,
         votes: 0,
-        upvoters: [],
-        createdBy: Meteor.user().profile.name
+        upvoters: []
+      };
+
+      Meteor.call('projectInsert', projAttrs, function(err, result) {
+        if (err)
+          return alert(error.reason);
+        Router.go('projects');
       });
-
-      // cleaning after database gets values
-      event.target.name.value = '';
-      event.target.description.value  = '';
-
-      // maybe have some sort of router redirect
-      Router.go('projects');
-      return false;
-    } else {
-      alert('Must be logged in to add a project proposal');
-      Router.go('projects');
-      return false;
     }
   }
 });
