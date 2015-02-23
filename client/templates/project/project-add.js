@@ -21,7 +21,7 @@ Template.projectAdd.events({
       Meteor.call('projectInsert', projAttrs, function(err, result) {
         if (err)
           return alert(error.reason);
-        Router.go('projects');
+        Router.go('/');
       });
     }
   }
