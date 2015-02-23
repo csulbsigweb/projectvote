@@ -23,6 +23,8 @@ Template.projectAdd.events({
           return alert(error.reason);
         Router.go('/');
       });
+      // might be better to redirect here instead
+      Router.go('/');
     }
   }
 });
